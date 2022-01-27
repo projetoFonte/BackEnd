@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.org.generation.fonte.model.PostagemModel;
+import br.org.generation.fonte.model.Postagem;
 
 @Repository
-public interface PostagemRepository extends JpaRepository<PostagemModel, Long> 
+public interface PostagemRepository extends JpaRepository<Postagem, Long> 
 {	
-	List<PostagemModel> findAllByTituloContainingIgnoreCase (String titulo);
+	List<Postagem> findAllByTituloContainingIgnoreCase (String titulo);
 }

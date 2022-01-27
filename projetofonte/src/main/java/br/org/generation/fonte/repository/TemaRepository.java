@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.org.generation.fonte.model.TemaModel;
+import br.org.generation.fonte.model.Tema;
 
 @Repository
-public interface TemaRepository extends JpaRepository<TemaModel, Long>
+public interface TemaRepository extends JpaRepository<Tema, Long>
 {
-	List<TemaModel> findAllByCategoriaContainingIgnoreCase(String categoria);
-	List<TemaModel> findAllByDescricaoContainingIgnoreCase(String descricao);
+	List<Tema> findAllByCategoriaContainingIgnoreCase(String categoria);
+	List<Tema> findAllByDescricaoContainingIgnoreCase(String descricao);
 }

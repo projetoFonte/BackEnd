@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.generation.fonte.model.TemaModel;
+import br.org.generation.fonte.model.Tema;
 import br.org.generation.fonte.repository.TemaRepository;
 
 @RestController
@@ -29,13 +29,13 @@ public class TemaController
 	private TemaRepository temaRepository;
 	
 	@GetMapping
-	private ResponseEntity <List<TemaModel>> getAll()
+	private ResponseEntity <List<Tema>> getAll()
 	{
 		return ResponseEntity.ok(temaRepository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity <TemaModel> getById(@PathVariable Long id)
+	public ResponseEntity <Tema> getById(@PathVariable Long id)
 	{
 		return temaRepository.findById(id)
 				.map(res -> ResponseEntity.ok(res))
@@ -43,28 +43,28 @@ public class TemaController
 	}
 	
 	@GetMapping("/categoria/{categoria}")
-	public ResponseEntity <List<TemaModel>> getByCategoria(@PathVariable String categoria)
+	public ResponseEntity <List<Tema>> getByCategoria(@PathVariable String categoria)
 	{
 		return ResponseEntity.ok(temaRepository
 				.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
 	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity <List<TemaModel>> getByDescricao(@PathVariable String descricao)
+	public ResponseEntity <List<Tema>> getByDescricao(@PathVariable String descricao)
 	{
 		return ResponseEntity.ok(temaRepository
 				.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	
 	@PostMapping
-	public ResponseEntity <TemaModel> postTemaModel(@Valid @RequestBody TemaModel tema)
+	public ResponseEntity <Tema> postTemaModel(@Valid @RequestBody Tema tema)
 	{
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(temaRepository.save(tema));
 	}
 	
 	@PutMapping
-	public ResponseEntity <TemaModel> putTemaModel(@Valid @RequestBody TemaModel tema )
+	public ResponseEntity <Tema> putTemaModel(@Valid @RequestBody Tema tema )
 	{
 		return temaRepository.findById(tema.getId())
 				.map(res -> ResponseEntity.ok(temaRepository.save(tema)))
