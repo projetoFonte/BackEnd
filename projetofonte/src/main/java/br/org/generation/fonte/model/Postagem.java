@@ -1,8 +1,7 @@
 package br.org.generation.fonte.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -36,9 +36,8 @@ public class Postagem {
 	@Size(min = 0, max = 1000, message = "Escolha uma imagem para a postagem. (Opcional)")
 	private String imagem;
 	
-	@Column(name = "data_lancamento")
-	@JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dataDePostagem;
+	@UpdateTimestamp
+    private LocalDateTime dataDePostagem;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
@@ -80,12 +79,20 @@ public class Postagem {
 		this.imagem = imagem;
 	}
 
-	public LocalDate getDataDePostagem() {
+	public LocalDateTime getDataDePostagem() {
 		return dataDePostagem;
 	}
 
-	public void setDataDePostagem(LocalDate dataDePostagem) {
+	public void setDataDePostagem(LocalDateTime dataDePostagem) {
 		this.dataDePostagem = dataDePostagem;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Tema getTema() {

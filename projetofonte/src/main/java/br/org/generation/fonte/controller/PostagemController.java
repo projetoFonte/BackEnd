@@ -1,5 +1,6 @@
 package br.org.generation.fonte.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import br.org.generation.fonte.model.Postagem;
 import br.org.generation.fonte.repository.PostagemRepository;
@@ -47,6 +47,12 @@ public class PostagemController {
 	public ResponseEntity <List<Postagem>> getByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
+	
+	@GetMapping("/dataDePostagem/{start}/dataDePostagem/{end}")
+    public ResponseEntity <List<Postagem>> getByDataDePostagem(@PathVariable LocalDateTime start, @PathVariable LocalDateTime end){
+        return ResponseEntity.ok(postagemRepository.findByDataDePostagemBetween(start, end));
+	}
+	
 	@PostMapping
 	public  ResponseEntity <Postagem> postPostagem(@Valid @RequestBody Postagem postagem){
 		return temaRepository.findById(postagem.getTema().getId())
