@@ -26,13 +26,13 @@ public class Usuario {
 	@Size(min = 4, max = 255, message = "É necessário cadastrar um email válido...")
 	private String email;
 	
-	@NotBlank(message="É necessário cadastrar um nome válido.")
-	@Size(min = 4, max = 255, message = "É necessário que seu nome tenha no minimo 4 caracteres.")
-	private String nome;
-	
 	@NotBlank(message="É necessário cadastrar uma senha válida.")
 	@Size(min = 6, max = 255, message = "É necessário que informe uma senha válida.")
 	private String senha;
+	
+	@NotBlank(message="É necessário cadastrar um nome válido.")
+	@Size(min = 4, max = 255, message = "É necessário que seu nome tenha no minimo 4 caracteres.")
+	private String nome;
 	
 	private String foto;
 

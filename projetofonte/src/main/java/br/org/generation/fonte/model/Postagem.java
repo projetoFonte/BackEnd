@@ -25,13 +25,13 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-	@NotBlank(message = "É necessário definir o texto da postagem.")
-	@Size(min = 0, max = 1000, message = "Informe o que você deseja postar.")
-	private String texto;
-	
 	@NotBlank(message = "É necessário defiinir o título da postagem.")
 	@Size(max=500)
 	private String titulo;
+	
+	@NotBlank(message = "É necessário definir o texto da postagem.")
+	@Size(min = 0, max = 1000, message = "Informe o que você deseja postar.")
+	private String texto;
 	
 	@Size(min = 0, max = 1000, message = "Escolha uma imagem para a postagem. (Opcional)")
 	private String imagem;
