@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class PostagemModel {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-	@NotBlank(message = " É necessário definir o texto da postagem ")
-	@Size(min = 0, max = 1000, message = " Informe o que você deseja postar!")
+	@NotBlank(message = "É necessário definir o texto da postagem.")
+	@Size(min = 0, max = 1000, message = "Informe o que você deseja postar.")
 	private String texto;
 	
 	@NotBlank(message = "É necessário defiinir o título da postagem.")
