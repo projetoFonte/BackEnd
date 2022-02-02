@@ -25,7 +25,7 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
-	@NotBlank(message = "É necessário defiinir o título da postagem.")
+	@NotBlank(message = "É necessário definir o título da postagem.")
 	@Size(max=500)
 	private String titulo;
 	
@@ -102,5 +102,5 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	}
-
+	
+}

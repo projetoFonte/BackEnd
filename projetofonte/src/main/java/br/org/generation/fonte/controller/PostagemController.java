@@ -37,12 +37,14 @@ public class PostagemController {
 	public ResponseEntity<List<Postagem>> getAll(){
 		return ResponseEntity.ok(postagemRepository.findAll());
 	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity <Postagem> getById(@PathVariable Long id){
 		return postagemRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.notFound().build());
 	}
+	
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity <List<Postagem>> getByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
@@ -72,6 +74,7 @@ public class PostagemController {
 				})
 				.orElse(ResponseEntity.badRequest().build());
 	}
+	
 	@PutMapping
 	public  ResponseEntity <Postagem> putPostagem(@Valid @RequestBody Postagem postagem){
 		
@@ -86,7 +89,8 @@ public class PostagemController {
 		
 		return ResponseEntity.notFound().build();
 
-	}	
+	}
+	
 	@DeleteMapping("/{id}")
 	public  ResponseEntity <?> DeletePostagem(@PathVariable Long id){
 		return postagemRepository.findById(id)

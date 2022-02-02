@@ -16,22 +16,22 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="tb_usuario")
+@Table(name = "tb_usuario")
 public class Usuario {
 	
 	@Id 
-	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message="É necessário cadastrar um email válido.")
-	@Email(message="É necessário cadastrar um email válido.")
+	@NotBlank(message = "É necessário cadastrar um email válido.")
+	@Email(message = "É necessário cadastrar um email válido.")
 	private String usuario;
 	
-	@NotBlank(message="É necessário cadastrar uma senha válida.")
+	@NotBlank(message = "É necessário cadastrar uma senha válida.")
 	@Size(min = 8,  message = "É necessário que informe uma senha válida.")
 	private String senha;
 	
-	@NotBlank(message="É necessário cadastrar um nome válido.")
+	@NotBlank(message = "É necessário cadastrar um nome válido.")
 	@Size(min = 4, max = 255, message = "É necessário que seu nome tenha no minimo 4 caracteres.")
 	private String nome;
 	
@@ -48,7 +48,7 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
-	public Usuario(){ }
+	public Usuario() { }
 	
 	public Long getId() {
 		return id;
@@ -98,5 +98,4 @@ public class Usuario {
 		this.postagem = postagem;
 	}
 	
-
 }
