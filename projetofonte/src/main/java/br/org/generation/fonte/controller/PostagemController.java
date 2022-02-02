@@ -48,9 +48,20 @@ public class PostagemController {
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
-	@GetMapping("/dataDePostagem/{start}/dataDePostagem/{end}")
-    public ResponseEntity <List<Postagem>> getByDataDePostagem(@PathVariable LocalDateTime start, @PathVariable LocalDateTime end){
-        return ResponseEntity.ok(postagemRepository.findByDataDePostagemBetween(start, end));
+	@GetMapping("/data_inicial/{start}/data_final/{end}")
+	public ResponseEntity<List<Postagem>> getByDataEntre(@PathVariable String start, @PathVariable String end){
+		
+		int anoInicial = Integer.valueOf(start.substring(0, 4));
+		int mesIncial = Integer.valueOf(start.substring(5, 7));
+		int diaInicial = Integer.valueOf(start.substring(8, 10));
+		LocalDateTime inicio = LocalDateTime.of(anoInicial, mesIncial, diaInicial, 00, 00, 00);
+		
+		int anoFinal = Integer.valueOf(end.substring(0, 4));
+		int mesFinal = Integer.valueOf(end.substring(5, 7));
+		int diaFinal = Integer.valueOf(end.substring(8, 10));
+		LocalDateTime fim = LocalDateTime.of(anoFinal, mesFinal, diaFinal, 00, 00, 00);
+		
+		return ResponseEntity.ok(postagemRepository.findByDataDePostagemBetween(inicio, fim));
 	}
 	
 	@PostMapping
