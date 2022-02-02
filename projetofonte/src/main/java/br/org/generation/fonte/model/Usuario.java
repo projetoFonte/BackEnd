@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -23,11 +24,11 @@ public class Usuario {
 	private Long id;
 
 	@NotBlank(message="É necessário cadastrar um email válido.")
-	@Size(min = 4, max = 255, message = "É necessário cadastrar um email válido...")
-	private String email;
+	@Email(message="É necessário cadastrar um email válido.")
+	private String usuario;
 	
 	@NotBlank(message="É necessário cadastrar uma senha válida.")
-	@Size(min = 6, max = 255, message = "É necessário que informe uma senha válida.")
+	@Size(min = 8,  message = "É necessário que informe uma senha válida.")
 	private String senha;
 	
 	@NotBlank(message="É necessário cadastrar um nome válido.")
@@ -40,6 +41,15 @@ public class Usuario {
     @JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 	
+	public Usuario(Long id,  String nome,String usuario, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+	
+	public Usuario(){ }
+	
 	public Long getId() {
 		return id;
 	}
@@ -48,12 +58,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getNome() {
