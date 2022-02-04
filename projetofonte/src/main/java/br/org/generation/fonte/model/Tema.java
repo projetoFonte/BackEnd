@@ -24,11 +24,11 @@ public class Tema {
 	private Long id;
 	
 	@NotBlank(message = " É necessário definir a categoria! ")
-	@Size(min = 10, max = 255, message = " É necessário que informe a categoria do seu tema, utilizando no mínimo 10 caractéres. ")
+	@Size(max = 255, message = " É necessário que informe a categoria do seu tema, utilizando no mínimo 10 caractéres. ")
 	private String categoria;
 	
 	@NotBlank(message = "É necessário informar a descrição do seu tema! ")
-	@Size(min = 10, max = 255, message = " É necessário que informe a descrição do seu tema, utilizando no mínimo 10 caractéres. ")
+	@Size(max = 255, message = " É necessário que informe a descrição do seu tema, utilizando no mínimo 10 caractéres. ")
 	private String descricao;
 	
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
