@@ -31,7 +31,7 @@ public class Tema {
 	@Size(max = 255, message = " É necessário que informe a descrição do seu tema, utilizando no mínimo 10 caractéres. ")
 	private String descricao;
 	
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("tema")
 	private List<Postagem> postagem; 
 
